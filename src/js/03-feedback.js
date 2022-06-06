@@ -9,13 +9,16 @@ const formData = {};
 const fillContactFormElements = form => {
     const formDataFromLocalStorage = JSON.parse(localStorage.getItem(CONTACT_FORM_LOCAL_STORAGE_KEY));
     const formElements = form.elements;
-
+    // console.log(formElements);
+    // console.log(formElements['email'].value);
     for (const key in formDataFromLocalStorage) {
         if (formDataFromLocalStorage.hasOwnProperty(key)) {
             formElements[key].value = formDataFromLocalStorage[key];
         }
     }
+
 };
+
 
 fillContactFormElements(contactFormEl);
 
@@ -24,6 +27,8 @@ const onContactFormElChange = event => {
 
     const contactFormElValue = target.value;
     const contactFormElName = target.name;
+
+
 
     formData[contactFormElName] = contactFormElValue;
 
@@ -40,12 +45,16 @@ const onContactFormSubmit = event => {
 
     localStorage.removeItem(CONTACT_FORM_LOCAL_STORAGE_KEY);
     event.currentTarget.reset();
+    console.log(JSON.stringify(formData));
 
 };
 
 contactFormEl.addEventListener('change', onContactFormElChange);
 contactFormEl.addEventListener('submit', onContactFormSubmit);
 contactFormEl.addEventListener('input', throttle(onContactFormElChange, 1500));
+
+
+
 // contactFormEl.addEventListener('input', throttle(onContactFormSubmit, 5000));
 
 // contactFormEl.addEventListener(
