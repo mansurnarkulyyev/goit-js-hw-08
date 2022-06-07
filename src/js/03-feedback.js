@@ -4,7 +4,10 @@ import throttle from "lodash.throttle";
 
 const CONTACT_FORM_LOCAL_STORAGE_KEY = 'feedback-form-state';
 const contactFormEl = document.querySelector('.feedback-form');
+// const contactFormInput = document.querySelector('.feedback-form input');
+// const contactFormTextarea = document.querySelector('.feedback-form textarea');
 const formData = {};
+
 
 const fillContactFormElements = form => {
     const formDataFromLocalStorage = JSON.parse(localStorage.getItem(CONTACT_FORM_LOCAL_STORAGE_KEY));
@@ -28,11 +31,12 @@ const onContactFormElChange = event => {
     const contactFormElValue = target.value;
     const contactFormElName = target.name;
 
-
-
     formData[contactFormElName] = contactFormElValue;
 
+    console.log(JSON.stringify(formData));
+
     localStorage.setItem(CONTACT_FORM_LOCAL_STORAGE_KEY, JSON.stringify(formData));
+
 };
 
 const onContactFormSubmit = event => {
@@ -49,37 +53,13 @@ const onContactFormSubmit = event => {
 
 };
 
-contactFormEl.addEventListener('change', onContactFormElChange);
+contactFormEl.addEventListener('change', throttle(onContactFormElChange, 1500));
 contactFormEl.addEventListener('submit', onContactFormSubmit);
 contactFormEl.addEventListener('input', throttle(onContactFormElChange, 1500));
 
 
 
 // contactFormEl.addEventListener('input', throttle(onContactFormSubmit, 5000));
-
-// contactFormEl.addEventListener(
-//     "load",
-//     _.throttle((event) => {
-//         localStorage.removeItem(CONTACT_FORM_LOCAL_STORAGE_KEY);
-//         event.currentTarget.reset();
-//     }, 500)
-// );
-
-// player.setCurrentTime(30.456).then(function(seconds) {
-//     // seconds = the actual time that the player seeked to
-// }).catch(function(error) {
-//     switch (error.name) {
-//         case 'RangeError':
-//             // the time was less than 0 or greater than the video’s duration
-//             break;
-
-//         default:
-//             // some other error occurred
-//             break;
-//     }
-// });
-
-
 
 
 // *****
