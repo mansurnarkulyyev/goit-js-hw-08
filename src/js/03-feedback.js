@@ -59,9 +59,9 @@ const onContactFormSubmit = event => {
 
 };
 
-contactFormTextarea.addEventListener('change', throttle(onContactFormElChange, 1500));
+contactFormTextarea.addEventListener('change', throttle(onContactFormElChange, 500));
 contactFormEl.addEventListener('submit', onContactFormSubmit);
-contactFormEl.addEventListener('input', throttle(onContactFormElChange, 1500));
+contactFormEl.addEventListener('input', throttle(onContactFormElChange, 500));
 
 
 
