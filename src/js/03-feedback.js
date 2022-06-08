@@ -5,7 +5,7 @@ import throttle from "lodash.throttle";
 const CONTACT_FORM_LOCAL_STORAGE_KEY = 'feedback-form-state';
 const contactFormEl = document.querySelector('.feedback-form');
 // const contactFormInput = document.querySelector('.feedback-form input');
-// const contactFormTextarea = document.querySelector('.feedback-form textarea');
+const contactFormTextarea = document.querySelector('.feedback-form textarea');
 const formData = {};
 
 
@@ -33,7 +33,7 @@ const onContactFormElChange = event => {
 
     formData[contactFormElName] = contactFormElValue;
 
-    console.log(JSON.stringify(formData));
+    // console.log(JSON.stringify(formData));
 
     localStorage.setItem(CONTACT_FORM_LOCAL_STORAGE_KEY, JSON.stringify(formData));
 
@@ -42,20 +42,27 @@ const onContactFormElChange = event => {
 const onContactFormSubmit = event => {
     event.preventDefault();
 
-    // throttle((event) => {
-    //     localStorage.removeItem(CONTACT_FORM_LOCAL_STORAGE_KEY);
-    //     event.currentTarget.reset();
-    // }, 500)
+    // const contactFormElValue = target.value;
+    // const contactFormElName = target.name;
+    // const contactFormElValue = currentTarget.value;
+    // const contactFormElName = currentTarget.name;
+
+    // formData[contactFormElName] = contactFormElValue;
+    // console.log(formData);
+
+    const formData = { email: contactFormEl.email.value, message: contactFormEl.message.value }
+    console.log(formData)
 
     localStorage.removeItem(CONTACT_FORM_LOCAL_STORAGE_KEY);
     event.currentTarget.reset();
-    console.log(JSON.stringify(formData));
+    // console.log(JSON.stringify(formData));
 
 };
 
-contactFormEl.addEventListener('change', throttle(onContactFormElChange, 1500));
+contactFormTextarea.addEventListener('change', throttle(onContactFormElChange, 1500));
 contactFormEl.addEventListener('submit', onContactFormSubmit);
 contactFormEl.addEventListener('input', throttle(onContactFormElChange, 1500));
+
 
 
 
