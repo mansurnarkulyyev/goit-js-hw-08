@@ -65,22 +65,3 @@ contactFormEl.addEventListener('input', throttle(onContactFormElChange, 500));
 
 
 
-
-// contactFormEl.addEventListener('input', throttle(onContactFormSubmit, 5000));
-
-
-// *****
-// const form = document.querySelector(".feedback-form");
-// // const output = document.querySelector("#output");
-// const LOCALSTORAGE_KEY = "feedback-form-state";
-
-// // updateOutput();
-// form.addEventListener("submit", saveMessage);
-
-// function saveMessage(evt) {
-//     evt.preventDefault();
-//     localStorage.setItem(LOCALSTORAGE_KEY, form.elements.message.value);
-//     updateOutput();
-//     form.reset();
-// }
-// ****
