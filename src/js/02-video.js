@@ -28,25 +28,3 @@ player.setCurrentTime(getTime('videoplayer-current-time'));
 
 
 
-
-
-// // Описан в документации
-// import throttle from "lodash.throttle";
-// import SimpleLightbox from "simplelightbox";
-// // Дополнительный импорт стилей
-// import "simplelightbox/dist/simple-lightbox.min.css";
-
-
-// const iframe = document.querySelector('iframe');
-// const player = new Vimeo.Player(iframe);
-
-// const onPlay = function (data) {
-//     localStorage.setItem('videoplayer-current-time', JSON.stringify(data))
-// };
-
-// player.on('timeupdate', onPlay);
-
-// const videoPlayStop = JSON.parse(localStorage.getItem('videoplayer-current-time'))
-// const { seconds } = videoPlayStop;
-
-// player.setCurrentTime(seconds, throttle(onPlay, 500));
